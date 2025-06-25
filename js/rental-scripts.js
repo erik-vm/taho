@@ -1,26 +1,46 @@
 // Car rental functionality
 let currentImageIndex = [0, 0, 0, 0]; // Track current image for each car
-let currentModalCarIndex = 0; // Track which car is being viewed in modal
-let modalCurrentImageIndex = 0; // Track current image in modal
+let modalImageIndex = 0; // Track current image in modal
+let modalCarIndex = 0; // Track which car's images are in modal
 
-// Car data for modal
-const carData = [
-  {
-    name: "Porche 911",
-    price: "145 € / päev",
-    images: ["images/cars/prch/prch1.jpg", "images/cars/prch/prch2.jpg", "images/cars/prch/prch3.jpg"]
-  },
-  {
-    name: "Mercedes AMG",
-    price: "175 € / päev", 
-    images: ["images/cars/mb/mb1.jpg", "images/cars/mb/mb2.jpg", "images/cars/mb/mb3.jpg"]
-  },
-  {
-    name: "Volkswagen Beetle",
-    price: "85 € / päev",
-    images: ["images/cars/beetle/beetle1.jpg", "images/cars/beetle/beetle2.jpg", "images/cars/beetle/beetle3.jpg"]
+// Popup Ad functionality
+function showPopupAd() {
+  const popup = document.getElementById('popupAdModal');
+  if (popup) {
+    popup.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
   }
-];
+}
+
+function closePopupAd() {
+  const popup = document.getElementById('popupAdModal');
+  if (popup) {
+    popup.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restore background scrolling
+    
+    // Set timestamp when ad was closed
+    const now = new Date().getTime();
+    localStorage.setItem('tahoAdLastShown', now.toString());
+  }
+}
+
+function checkAndShowAd() {
+  const lastShown = localStorage.getItem('tahoAdLastShown');
+  const now = new Date().getTime();
+  const twentyFourHours = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+  
+  // Show ad if never shown before OR if more than 24 hours have passed
+  if (!lastShown || (now - parseInt(lastShown)) > twentyFourHours) {
+    // Small delay to ensure page is loaded
+    setTimeout(showPopupAd, 1500);
+  }
+}
+
+function onAdImageClick() {
+  // Open the aramora.html page in new tab when ad image is clicked
+  window.open('aramora.html', '_blank');
+  closePopupAd();
+}
 
 // Tab switching functionality
 function switchTab(tabName) {
@@ -94,68 +114,82 @@ function toggleDetails(carIndex) {
 }
 
 // Modal functionality
-function openModal(carIndex, imageIndex) {
-  currentModalCarIndex = carIndex;
-  modalCurrentImageIndex = imageIndex;
+function openImageModal(carIndex, imageIndex) {
+  modalCarIndex = carIndex;
+  modalImageIndex = imageIndex || currentImageIndex[carIndex];
   
   const modal = document.getElementById('imageModal');
-  const modalImage = document.getElementById('modalImage');
-  const modalInfo = document.getElementById('modalInfo');
+  const modalImg = document.getElementById('modalImage');
+  const container = document.querySelectorAll('.car-image-container')[carIndex];
+  const images = container.querySelectorAll('.car-image');
   
-  // Set image and info
-  modalImage.src = carData[carIndex].images[imageIndex];
-  modalInfo.innerHTML = `
-    <h3>${carData[carIndex].name}</h3>
-    <p>${carData[carIndex].price} - Pilt ${imageIndex + 1} / ${carData[carIndex].images.length}</p>
-  `;
+  // Set modal image source
+  modalImg.src = images[modalImageIndex].src;
+  modalImg.alt = images[modalImageIndex].alt;
+  
+  // Update modal indicators
+  updateModalIndicators();
   
   // Show modal
-  modal.classList.add('show');
+  modal.style.display = 'block';
   document.body.style.overflow = 'hidden'; // Prevent background scrolling
 }
 
-function closeModal() {
+function closeImageModal() {
   const modal = document.getElementById('imageModal');
-  modal.classList.remove('show');
-  document.body.style.overflow = 'auto'; // Restore scrolling
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto'; // Restore background scrolling
 }
 
 function changeModalImage(direction) {
-  modalCurrentImageIndex += direction;
+  const container = document.querySelectorAll('.car-image-container')[modalCarIndex];
+  const images = container.querySelectorAll('.car-image');
+  const modalImg = document.getElementById('modalImage');
   
-  if (modalCurrentImageIndex < 0) {
-    modalCurrentImageIndex = carData[currentModalCarIndex].images.length - 1;
-  } else if (modalCurrentImageIndex >= carData[currentModalCarIndex].images.length) {
-    modalCurrentImageIndex = 0;
+  // Calculate new index
+  modalImageIndex += direction;
+  if (modalImageIndex < 0) {
+    modalImageIndex = images.length - 1;
+  } else if (modalImageIndex >= images.length) {
+    modalImageIndex = 0;
   }
   
-  const modalImage = document.getElementById('modalImage');
-  const modalInfo = document.getElementById('modalInfo');
+  // Update modal image
+  modalImg.src = images[modalImageIndex].src;
+  modalImg.alt = images[modalImageIndex].alt;
   
-  modalImage.src = carData[currentModalCarIndex].images[modalCurrentImageIndex];
-  modalInfo.innerHTML = `
-    <h3>${carData[currentModalCarIndex].name}</h3>
-    <p>${carData[currentModalCarIndex].price} - Pilt ${modalCurrentImageIndex + 1} / ${carData[currentModalCarIndex].images.length}</p>
-  `;
+  // Update indicators
+  updateModalIndicators();
+}
+
+function showModalImage(imageIndex) {
+  const container = document.querySelectorAll('.car-image-container')[modalCarIndex];
+  const images = container.querySelectorAll('.car-image');
+  const modalImg = document.getElementById('modalImage');
+  
+  modalImageIndex = imageIndex;
+  modalImg.src = images[modalImageIndex].src;
+  modalImg.alt = images[modalImageIndex].alt;
+  
+  // Update indicators
+  updateModalIndicators();
+}
+
+function updateModalIndicators() {
+  const indicators = document.querySelectorAll('.modal-indicator');
+  indicators.forEach((indicator, index) => {
+    if (index === modalImageIndex) {
+      indicator.classList.add('active');
+    } else {
+      indicator.classList.remove('active');
+    }
+  });
 }
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  // Create modal HTML
-  const modalHTML = `
-    <div id="imageModal" class="modal">
-      <div class="modal-content">
-        <button class="modal-close" onclick="closeModal()">&times;</button>
-        <button class="modal-nav prev" onclick="changeModalImage(-1)">‹</button>
-        <button class="modal-nav next" onclick="changeModalImage(1)">›</button>
-        <img id="modalImage" class="modal-image" src="" alt="Car Image">
-        <div id="modalInfo" class="modal-info"></div>
-      </div>
-    </div>
-  `;
-  
-  // Add modal to body
-  document.body.insertAdjacentHTML('beforeend', modalHTML);
+  // Check and show popup ad
+  checkAndShowAd();
   
   // Initialize car images - ensure first image is visible for each car
   const containers = document.querySelectorAll('.car-image-container');
@@ -170,6 +204,11 @@ document.addEventListener('DOMContentLoaded', function() {
       } else {
         img.classList.remove('active');
       }
+      
+      // Add click event listener for modal
+      img.addEventListener('click', function() {
+        openImageModal(carIndex, imgIndex);
+      });
     });
     
     // Make sure only the first indicator is active
@@ -180,45 +219,46 @@ document.addEventListener('DOMContentLoaded', function() {
         indicator.classList.remove('active');
       }
     });
+  });
+  
+  // Add keyboard navigation for modal
+  document.addEventListener('keydown', function(e) {
+    const modal = document.getElementById('imageModal');
+    const popupAd = document.getElementById('popupAdModal');
     
-    // Add click event to the container to open modal with currently active image
-    container.addEventListener('click', function(event) {
-      // Don't trigger if clicking on navigation buttons or indicators
-      if (event.target.classList.contains('image-nav') || 
-          event.target.classList.contains('indicator')) {
-        return;
-      }
-      
-      // Get the currently active image index for this car
-      const currentActiveIndex = currentImageIndex[carIndex];
-      openModal(carIndex, currentActiveIndex);
-    });
-  });
-  
-  // Close modal when clicking outside the image
-  document.addEventListener('click', function(event) {
-    const modal = document.getElementById('imageModal');
-    if (event.target === modal) {
-      closeModal();
-    }
-  });
-  
-  // Close modal with Escape key
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-      closeModal();
-    }
-  });
-  
-  // Navigate with arrow keys in modal
-  document.addEventListener('keydown', function(event) {
-    const modal = document.getElementById('imageModal');
-    if (modal.classList.contains('show')) {
-      if (event.key === 'ArrowLeft') {
+    if (modal && modal.style.display === 'block') {
+      if (e.key === 'Escape') {
+        closeImageModal();
+      } else if (e.key === 'ArrowLeft') {
         changeModalImage(-1);
-      } else if (event.key === 'ArrowRight') {
+      } else if (e.key === 'ArrowRight') {
         changeModalImage(1);
       }
     }
+    
+    // ESC key closes popup ad
+    if (popupAd && popupAd.style.display === 'block' && e.key === 'Escape') {
+      closePopupAd();
+    }
   });
+  
+  // Close modal when clicking outside the image
+  const modal = document.getElementById('imageModal');
+  if (modal) {
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeImageModal();
+      }
+    });
+  }
+  
+  // Close popup ad when clicking outside the content
+  const popupAd = document.getElementById('popupAdModal');
+  if (popupAd) {
+    popupAd.addEventListener('click', function(e) {
+      if (e.target === popupAd) {
+        closePopupAd();
+      }
+    });
+  }
 });

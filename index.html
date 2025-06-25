@@ -148,7 +148,7 @@
               <div class="fright">
                 <div class="indent">
                   <span class="address">Hunditubaka tee 8, Tallinn</span>
-                  <span class="phone"
+                  <span class="phone" style="margin-top: 0.2rem"
                     >Tel:
                     <a
                       data-rel="external"
@@ -156,8 +156,18 @@
                       data-role="touch"
                       href="tel:+3725143437"
                       >+372 5143 437</a
-                    ></span
-                  >
+                    >
+                    <span style="margin: 0 0.5rem"></span>
+                    <a
+                      href="https://www.facebook.com/profile.php?id=100063656076298"
+                      target="_blank"
+                      ><img
+                        src="images/facebook.svg"
+                        width="30px"
+                        alt="facebook logo"
+                        style="filter: invert()"
+                    /></a>
+                  </span>
                 </div>
               </div>
             </div>
@@ -318,20 +328,20 @@
                                         <td></td>
                                       </tr>
                                       <tr>
-                                        <td>13”-16”</td>
+                                        <td>13"-16"</td>
                                         <td>55 €</td>
                                       </tr>
                                       <tr>
-                                        <td>17”-18”</td>
+                                        <td>17"-18"</td>
                                         <td>60 €</td>
                                       </tr>
                                       <tr>
-                                        <td>19”-21”</td>
+                                        <td>19"-21"</td>
                                         <td>75 €</td>
                                       </tr>
                                       <tr>
                                         <td>
-                                          Run flat lisandub 15 € /” hinnale
+                                          Run flat lisandub 15 € /" hinnale
                                         </td>
                                         <td></td>
                                       </tr>
@@ -633,11 +643,12 @@
                               </div>
                             </div>
 
-    <div class="box p3" style="width: 100%; ">
-                                <div class="wrapper">
-                                   <a href="aramora.html" target="_blank"> <img src="images/saun.png"/></a>
-                                 
-                                </div>
+                            <div class="box p3" style="width: 100%">
+                              <div class="wrapper">
+                                <a href="aramora.html" target="_blank">
+                                  <img src="images/saun.png" />
+                                </a>
+                              </div>
                             </div>
 
                             <!--==============================GOOGLE MAPS SPAN NOINDEX=================================-->
@@ -703,6 +714,46 @@
             <span>&copy; Taho OÜ</span>
           </div>
         </footer>
+      </div>
+    </div>
+
+    <!-- Popup Ad Modal -->
+    <div id="popupAdModal" class="popup-ad-modal">
+      <div class="popup-ad-content">
+        <span class="popup-ad-close" onclick="closePopupAd()">&times;</span>
+        <img
+          src="images/saun.png"
+          alt="Sauna reklaam"
+          class="popup-ad-image"
+          onclick="onAdImageClick()"
+        />
+        <div class="popup-ad-footer">
+          <a
+            href="aramora.html"
+            target="_blank"
+            class="popup-ad-link"
+            onclick="closePopupAd()"
+            >Vaata rohkem</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+      <span class="modal-close" onclick="closeImageModal()">&times;</span>
+      <div class="modal-content">
+        <img id="modalImage" class="modal-image" alt="Car Image" />
+        <button class="modal-nav prev" onclick="changeModalImage(-1)">‹</button>
+        <button class="modal-nav next" onclick="changeModalImage(1)">›</button>
+        <div class="modal-indicators">
+          <span
+            class="modal-indicator active"
+            onclick="showModalImage(0)"
+          ></span>
+          <span class="modal-indicator" onclick="showModalImage(1)"></span>
+          <span class="modal-indicator" onclick="showModalImage(2)"></span>
+        </div>
       </div>
     </div>
 
