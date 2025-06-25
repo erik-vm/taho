@@ -76,9 +76,14 @@
       media="all"
     />
     <link rel="stylesheet" href="css/responsiveslides.css" />
-    
+
     <!-- New rental styles -->
-    <link rel="stylesheet" href="css/rental-styles.css" type="text/css" media="all" />
+    <link
+      rel="stylesheet"
+      href="css/rental-styles.css"
+      type="text/css"
+      media="all"
+    />
 
     <!-- Original JavaScript files -->
     <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
@@ -92,7 +97,7 @@
     <script src="js/jquery.equalheights.js" type="text/javascript"></script>
     <script src="js/css3-mediaqueries.js" type="text/javascript"></script>
     <script src="js/responsiveslides.js" type="text/javascript"></script>
-    
+
     <script>
       $(function () {
         $("#slider").responsiveSlides({
@@ -105,7 +110,7 @@
         });
       });
     </script>
-    
+
     <!--[if lt IE 8]>
       <div style="clear: both; text-align: center; position: relative">
         <a
@@ -228,10 +233,20 @@
                           <div class="main-content">
                             <!-- Tab Navigation -->
                             <div class="tab-navigation">
-                              <button class="tab-btn active" onclick="switchTab('services')">Teenused</button>
-                              <button class="tab-btn" onclick="switchTab('rental')">Rendiautod</button>
+                              <button
+                                class="tab-btn active"
+                                onclick="switchTab('services')"
+                              >
+                                Teenused
+                              </button>
+                              <button
+                                class="tab-btn"
+                                onclick="switchTab('rental')"
+                              >
+                                Rendiautod
+                              </button>
                             </div>
-                            
+
                             <!-- Services Tab -->
                             <div id="services-tab" class="tab-content active">
                               <div class="services">
@@ -240,13 +255,19 @@
                                   <ul class="list-1">
                                     <li>Mootori remont</li>
                                     <li>Veermiku remont</li>
+                                    <li>Õlivahetus</li>
+                                    <li>Ketivahetus</li>
+                                    <li>Hammasrihma vahetus</li>
                                     <li>
-                                      Kliimasüsteemi / konditsioneeri kontroll ja
-                                      täitmine
+                                      Kliimasüsteemi / konditsioneeri kontroll
+                                      ja täitmine
                                     </li>
                                     <li>Diagnostika</li>
                                     <li>Rehvivahetus</li>
                                     <li>Hooldustööd</li>
+                                    <li style="color: #e31e24">
+                                      Asendusauto võimalus!
+                                    </li>
                                   </ul>
                                 </div>
 
@@ -263,35 +284,56 @@
                                     </thead>
                                     <tbody>
                                       <tr>
-                                        <td>Lukksepatööd</td>
-                                        <td>40 € / h</td>
+                                        <td>Hooldus- ja remonttööd</td>
+                                        <td>45 € / h</td>
                                       </tr>
                                       <tr>
-                                        <td>Keevitustööd</td>
-                                        <td>40 € / h</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Õlivahetus</td>
-                                        <td>alates 20 €</td>
+                                        <td>Diagnostika ja elektritööd</td>
+                                        <td>65 € / h</td>
                                       </tr>
                                       <tr>
                                         <td>
-                                          Kliimasüsteemi / konditsioneeri kontroll
-                                          ja täitmine
+                                          Kliimaseadme täitmine ( +10 € / 100g )
                                         </td>
-                                        <td>alates 50 €</td>
+                                        <td>70 € kuni 500g</td>
                                       </tr>
                                       <tr>
-                                        <td>Rehvivahetus</td>
-                                        <td>alates 45 € / 4tk</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Veakoodide lugemine</td>
+                                        <td>Esitulede reguleerimine</td>
                                         <td>20 €</td>
                                       </tr>
                                       <tr>
-                                        <td>Diagnostika vigade kustutamine</td>
-                                        <td>10 €</td>
+                                        <td>Plokikaanelekke keemiline test</td>
+                                        <td>20 €</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Keevitustööd ( v.a keretööd )</td>
+                                        <td>65 € / h</td>
+                                      </tr>
+                                      <tr>
+                                        <td><br /></td>
+                                        <td></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Täisrehvivahetus</td>
+                                        <td></td>
+                                      </tr>
+                                      <tr>
+                                        <td>13”-16”</td>
+                                        <td>55 €</td>
+                                      </tr>
+                                      <tr>
+                                        <td>17”-18”</td>
+                                        <td>60 €</td>
+                                      </tr>
+                                      <tr>
+                                        <td>19”-21”</td>
+                                        <td>75 €</td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          Run flat lisandub 15 € /” hinnale
+                                        </td>
+                                        <td></td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -299,104 +341,247 @@
                                 </div>
                               </div>
                             </div>
-                            
+
                             <!-- Rental Tab -->
                             <div id="rental-tab" class="tab-content">
                               <div class="rental">
                                 <div class="indent-left">
                                   <h3>Rendiautod</h3>
                                 </div>
-                                
-                                <div class="rental-grid" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+
+                                <div
+                                  class="rental-grid"
+                                  style="
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: center;
+                                    align-items: center;
+                                  "
+                                >
                                   <!-- Car 1 -->
                                   <div class="car-card">
                                     <div class="car-image-container">
-                                      <img src="images/cars/prch/prch1.jpg" class="car-image active" alt="Porche 911">
-                                      <img src="images/cars/prch/prch2.jpg" class="car-image" alt="Porche 911">
-                                      <img src="images/cars/prch/prch3.jpg" class="car-image" alt="Porche 911">
-                                      
-                                      <button class="image-nav prev" onclick="changeImage(0, -1)">‹</button>
-                                      <button class="image-nav next" onclick="changeImage(0, 1)">›</button>
-                                      
+                                      <img
+                                        src="images/cars/prch/prch1.jpg"
+                                        class="car-image active"
+                                        alt="Porche 911"
+                                      />
+                                      <img
+                                        src="images/cars/prch/prch2.jpg"
+                                        class="car-image"
+                                        alt="Porche 911"
+                                      />
+                                      <img
+                                        src="images/cars/prch/prch3.jpg"
+                                        class="car-image"
+                                        alt="Porche 911"
+                                      />
+
+                                      <button
+                                        class="image-nav prev"
+                                        onclick="changeImage(0, -1)"
+                                      >
+                                        ‹
+                                      </button>
+                                      <button
+                                        class="image-nav next"
+                                        onclick="changeImage(0, 1)"
+                                      >
+                                        ›
+                                      </button>
+
                                       <div class="image-indicators">
-                                        <span class="indicator active" onclick="showImage(0, 0)"></span>
-                                        <span class="indicator" onclick="showImage(0, 1)"></span>
-                                        <span class="indicator" onclick="showImage(0, 2)"></span>
+                                        <span
+                                          class="indicator active"
+                                          onclick="showImage(0, 0)"
+                                        ></span>
+                                        <span
+                                          class="indicator"
+                                          onclick="showImage(0, 1)"
+                                        ></span>
+                                        <span
+                                          class="indicator"
+                                          onclick="showImage(0, 2)"
+                                        ></span>
                                       </div>
                                     </div>
                                     <div class="car-info">
                                       <div class="car-title">Porche 911</div>
                                       <div class="car-price">145 € / päev</div>
-                                      <button class="more-btn" onclick="toggleDetails(0)">Rohkem</button>
+                                      <button
+                                        class="more-btn"
+                                        onclick="toggleDetails(0)"
+                                      >
+                                        Rohkem
+                                      </button>
                                       <div class="car-details" id="details-0">
                                         <p><strong>Aasta:</strong> 2020</p>
                                         <p><strong>Kütus:</strong> Bensiin</p>
-                                        <p><strong>Käigukast:</strong> Automaat</p>
+                                        <p>
+                                          <strong>Käigukast:</strong> Automaat
+                                        </p>
                                         <p><strong>Istekohti:</strong> 5</p>
-                                        <p><strong>Kütusekulu:</strong> 6.5L/100km</p>
-                                        <p><strong>Lisainfo:</strong> Konditsioneer, Bluetooth, USB, airbagid</p>
+                                        <p>
+                                          <strong>Kütusekulu:</strong>
+                                          6.5L/100km
+                                        </p>
+                                        <p>
+                                          <strong>Lisainfo:</strong>
+                                          Konditsioneer, Bluetooth, USB,
+                                          airbagid
+                                        </p>
                                       </div>
                                     </div>
                                   </div>
-                                  
+
                                   <!-- Car 2 -->
                                   <div class="car-card">
                                     <div class="car-image-container">
-                                      <img src="images/cars/mb/mb1.jpg" class="car-image active" alt="MB AMG">
-                                      <img src="images/cars/mb/mb2.jpg" class="car-image" alt="MB AMG">
-                                      <img src="images/cars/mb/mb3.jpg" class="car-image" alt="MB AMG">
-                                      
-                                      <button class="image-nav prev" onclick="changeImage(1, -1)">‹</button>
-                                      <button class="image-nav next" onclick="changeImage(1, 1)">›</button>
-                                      
+                                      <img
+                                        src="images/cars/mb/mb1.jpg"
+                                        class="car-image active"
+                                        alt="MB AMG"
+                                      />
+                                      <img
+                                        src="images/cars/mb/mb2.jpg"
+                                        class="car-image"
+                                        alt="MB AMG"
+                                      />
+                                      <img
+                                        src="images/cars/mb/mb3.jpg"
+                                        class="car-image"
+                                        alt="MB AMG"
+                                      />
+
+                                      <button
+                                        class="image-nav prev"
+                                        onclick="changeImage(1, -1)"
+                                      >
+                                        ‹
+                                      </button>
+                                      <button
+                                        class="image-nav next"
+                                        onclick="changeImage(1, 1)"
+                                      >
+                                        ›
+                                      </button>
+
                                       <div class="image-indicators">
-                                        <span class="indicator active" onclick="showImage(1, 0)"></span>
-                                        <span class="indicator" onclick="showImage(1, 1)"></span>
-                                        <span class="indicator" onclick="showImage(1, 2)"></span>
+                                        <span
+                                          class="indicator active"
+                                          onclick="showImage(1, 0)"
+                                        ></span>
+                                        <span
+                                          class="indicator"
+                                          onclick="showImage(1, 1)"
+                                        ></span>
+                                        <span
+                                          class="indicator"
+                                          onclick="showImage(1, 2)"
+                                        ></span>
                                       </div>
                                     </div>
                                     <div class="car-info">
                                       <div class="car-title">Mercedes AMG</div>
                                       <div class="car-price">175 € / päev</div>
-                                      <button class="more-btn" onclick="toggleDetails(1)">Rohkem</button>
+                                      <button
+                                        class="more-btn"
+                                        onclick="toggleDetails(1)"
+                                      >
+                                        Rohkem
+                                      </button>
                                       <div class="car-details" id="details-1">
                                         <p><strong>Aasta:</strong> 2021</p>
                                         <p><strong>Kütus:</strong> Bensiin</p>
-                                        <p><strong>Käigukast:</strong> Automaat</p>
+                                        <p>
+                                          <strong>Käigukast:</strong> Automaat
+                                        </p>
                                         <p><strong>Istekohti:</strong> 5</p>
-                                        <p><strong>Kütusekulu:</strong> 7.2L/100km</p>
-                                        <p><strong>Lisainfo:</strong> Nahkistmed, GPS, premium heli, sportrezhiim</p>
+                                        <p>
+                                          <strong>Kütusekulu:</strong>
+                                          7.2L/100km
+                                        </p>
+                                        <p>
+                                          <strong>Lisainfo:</strong> Nahkistmed,
+                                          GPS, premium heli, sportrezhiim
+                                        </p>
                                       </div>
                                     </div>
                                   </div>
-                                  
+
                                   <!-- Car 3 -->
                                   <div class="car-card">
                                     <div class="car-image-container">
-                                      <img src="images/cars/beetle/beetle1.jpg" class="car-image active" alt="VW Beetle">
-                                      <img src="images/cars/beetle/beetle2.jpg" class="car-image" alt="VW Beetle">
-                                      <img src="images/cars/beetle/beetle3.jpg" class="car-image" alt="VW Beetle">
-                                      
-                                      <button class="image-nav prev" onclick="changeImage(2, -1)">‹</button>
-                                      <button class="image-nav next" onclick="changeImage(2, 1)">›</button>
-                                      
+                                      <img
+                                        src="images/cars/beetle/beetle1.jpg"
+                                        class="car-image active"
+                                        alt="VW Beetle"
+                                      />
+                                      <img
+                                        src="images/cars/beetle/beetle2.jpg"
+                                        class="car-image"
+                                        alt="VW Beetle"
+                                      />
+                                      <img
+                                        src="images/cars/beetle/beetle3.jpg"
+                                        class="car-image"
+                                        alt="VW Beetle"
+                                      />
+
+                                      <button
+                                        class="image-nav prev"
+                                        onclick="changeImage(2, -1)"
+                                      >
+                                        ‹
+                                      </button>
+                                      <button
+                                        class="image-nav next"
+                                        onclick="changeImage(2, 1)"
+                                      >
+                                        ›
+                                      </button>
+
                                       <div class="image-indicators">
-                                        <span class="indicator active" onclick="showImage(2, 0)"></span>
-                                        <span class="indicator" onclick="showImage(2, 1)"></span>
-                                        <span class="indicator" onclick="showImage(2, 2)"></span>
+                                        <span
+                                          class="indicator active"
+                                          onclick="showImage(2, 0)"
+                                        ></span>
+                                        <span
+                                          class="indicator"
+                                          onclick="showImage(2, 1)"
+                                        ></span>
+                                        <span
+                                          class="indicator"
+                                          onclick="showImage(2, 2)"
+                                        ></span>
                                       </div>
                                     </div>
                                     <div class="car-info">
-                                      <div class="car-title">Volkswagen Beetle</div>
+                                      <div class="car-title">
+                                        Volkswagen Beetle
+                                      </div>
                                       <div class="car-price">85 € / päev</div>
-                                      <button class="more-btn" onclick="toggleDetails(2)">Rohkem</button>
+                                      <button
+                                        class="more-btn"
+                                        onclick="toggleDetails(2)"
+                                      >
+                                        Rohkem
+                                      </button>
                                       <div class="car-details" id="details-2">
                                         <p><strong>Aasta:</strong> 2022</p>
                                         <p><strong>Kütus:</strong> Bensiin</p>
-                                        <p><strong>Käigukast:</strong> Automaat</p>
+                                        <p>
+                                          <strong>Käigukast:</strong> Automaat
+                                        </p>
                                         <p><strong>Istekohti:</strong> 5</p>
-                                        <p><strong>Kütusekulu:</strong> 6.8L/100km</p>
-                                        <p><strong>Lisainfo:</strong> Premium sisustus, massaažistmed, 360° kaamera</p>
+                                        <p>
+                                          <strong>Kütusekulu:</strong>
+                                          6.8L/100km
+                                        </p>
+                                        <p>
+                                          <strong>Lisainfo:</strong> Premium
+                                          sisustus, massaažistmed, 360° kaamera
+                                        </p>
                                       </div>
                                     </div>
                                   </div>
@@ -416,7 +601,7 @@
                               <li>Balti Autoosad AS</li>
                               <li>Teeme Varuosad OÜ</li>
                               <li>Forss OÜ</li>
-                              <li>Liqui Moly Eesti OÜ</li>
+                              <li>Aramora Grupp OÜ</li>
                               <li>iParts OÜ</li>
                               <li>K.G. Knutsson AS</li>
                             </ul>
@@ -424,23 +609,37 @@
                         </div>
                       </article>
 
-                      <article class="col-1-3" style="display: flex; justify-content: center; align-items: center;">
-                        <div class="wrap-col" style="width: 90%;">
-                          <div class="indent-left2" >
-                            <div class="box p3" style="width: 100%;">
+                      <article
+                        class="col-1-3"
+                        style="
+                          display: flex;
+                          justify-content: center;
+                          align-items: center;
+                        "
+                      >
+                        <div class="wrap-col" style="width: 90%">
+                          <div class="indent-left2">
+                            <div class="box p3" style="width: 100%">
                               <div class="padding">
                                 <div class="wrapper">
                                   <figure class="img-indent">
                                     <img src="images/page1-img4.png" />
                                   </figure>
-                                  <div class="extra-wrap" >
+                                  <div class="extra-wrap">
                                     <h3 class="p0">Avatud</h3>
                                   </div>
                                 </div>
-                                <p class="color-1 p0">E - R : 08:30 - 18:00</p>
-                                <p class="color-1 p1">L - P : kokkuleppel</p>
+                                <p class="color-1 p0">E - R : 09:00 - 17:00</p>
                               </div>
                             </div>
+
+    <div class="box p3" style="width: 100%; ">
+                                <div class="wrapper">
+                                   <a href="aramora.html" target="_blank"> <img src="images/saun.png"/></a>
+                                 
+                                </div>
+                            </div>
+
                             <!--==============================GOOGLE MAPS SPAN NOINDEX=================================-->
                             <span data-nosnippet>
                               <figure class="indent-bot">
@@ -455,7 +654,7 @@
                               </figure>
                             </span>
 
-                            <div  >
+                            <div>
                               <dl class="main-address">
                                 <dt>
                                   Taho OÜ<br />Hunditubaka tee 8, Tallinn 12015
@@ -476,6 +675,14 @@
                                   ><a href="mailto:info.taho@gmail.com"
                                     >info.taho@gmail.com</a
                                   >
+                                </dd>
+                                <dd>
+                                  <span>Facebook:</span
+                                  ><a
+                                    href="https://www.facebook.com/profile.php?id=100063656076298"
+                                    target="_blank"
+                                    >TAHO Autoremont ja hooldus
+                                  </a>
                                 </dd>
                               </dl>
                             </div>
@@ -498,10 +705,10 @@
         </footer>
       </div>
     </div>
-    
+
     <!-- New rental functionality script -->
     <script src="js/rental-scripts.js" type="text/javascript"></script>
-    
+
     <script type="text/javascript">
       Cufon.now();
     </script>
